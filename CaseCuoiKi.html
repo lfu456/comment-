@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="vi" dir="LTR" xmlns:fb="https://www.facebook.com/2008/fbml">
+   <head>
+
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Võ Lâm Cao Thủ Mobile</title>
+      <!-- CSRF Token -->
+      <meta name="csrf-token" content="2JL3eGEQmRuh5LISODF6lQygIn2axb3hIwfM9RdQ">
+      <link rel="icon" href="https://volamcaothu.mobi/images/logo.png" type="image/x-icon/">
+      <!-- <link rel="shortcut icon" href="https://volamcaothu.mobi/images/logo.png" type="image/x-icon" /> -->
+      <link rel="shortcut icon" href="https://img.zing.vn/products/vltkm/favicon.ico" />
+
+      <link href="https://volamcaothu.mobi/FE/css/jquery.toast.min.css" rel="stylesheet" type="text/css"/>
+      <link href="https://volamcaothu.mobi/FE/css/wstyle.css" rel="stylesheet" type="text/css"/>
+           
+      <style>
+         #loading {
+         width: 100%;
+         height: 100%;
+         top: 0px;
+         left: 0px;
+         position: fixed;
+         display: block;
+         z-index: 9999;
+         background-color: #000;
+         opacity: 0.4;
+         }
+         #loading-image {
+         position: absolute;
+         top: 40%;
+         left: 45%;
+         z-index: 100
+         }
+         button:disabled,
+         button[disabled] {
+         border: 1px solid #999999;
+         background-color: #cccccc !important;
+         background-image: none !important;
+         color: #666666;
+         }
+         
+         .f__m__h {
+            background: #f55361 !important;
+            
+         }
+         .f__m__h__ttl {
+            font-weight: bold !important;
+            color: #fff !important;
+         }
+         .f__btn[data-al="true"] {
+            background: #f55361 !important;
+            font-weight: bold;
+            color: #fff !important;
+         }
+
+         .goOut {
+            right: -35%;
+         }
+
+         .goIn {
+            right: 10px;
+         }
+      </style>
+      <style type="text/css">
+  .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(0,0,0,.125);
+      text-align: center;
+      margin: auto;
+  }
+  .card-header {
+      padding: .75rem 1.25rem;
+      margin-bottom: 0;
+      background-color: rgba(0,0,0,.03);
+      /* border-bottom: 1px solid rgba(0,0,0,.125); */
+    border-bottom: 0.01rem solid #e74a3b!important;
+  }
+  .card-body {
+      /* flex: 1 1 auto;
+      min-height: 1px;
+      padding: 1.25rem; */
+      overflow: scroll;
+  }
+   .badge{
+    display: inline-block;
+    padding: 5px 10px;
+    color: #FFF;
+    border-radius: 2px;
+    min-width: 92px;
+   }
+  .badge-success {
+      background-color: #28a745!important;
+  }
+  .badge-danger {
+      background-color: #dc3545!important;
+  }
+  .badge-primary {
+      background-color: #007bff!important;
+  }
+  .badge-warning {
+      background-color: #ffc107!important;
+  }
+  .badge-error{
+    background-color: #ff0000!important;
+  }
+  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+      padding: 8px;
+      line-height: 1.42857143;
+      vertical-align: top;
+  }
+  .table>thead {
+   background-color: #ffc107!important;
+  }
+  .table>thead>tr>th {
+      vertical-align: bottom;
+      /* border-bottom: 2px solid #000; */
+  }
+  .table {
+      width: 100%;
+      border-collapse: collapse;
+      /* max-width: 100%;
+      margin-bottom: 20px; */
+  }
+
+  .table tbody tr:nth-of-type(2n){
+    background-color: rgb(0, 0, 0, 0.05);
+  }
+  .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    border: 1px solid #858585;
+
+
+    line-height: 1.42857;
+    padding: 8px;
+    vertical-align: middle;
+}
+
+
+
+</style>
+      <link rel="stylesheet" href="https://volamcaothu.mobi/FE/css/jquery-ui.css">
+      <link rel="stylesheet" type="text/css" href="https://volamcaothu.mobi/FE/css/wstyle-small.css"/>
+      <link rel="stylesheet" type="text/css" href="https://volamcaothu.mobi/FE/css/wcskh.css"/>
+      <link rel="stylesheet" type="text/css" href="https://volamcaothu.mobi/FE/css/slick.css"/>
+      <link rel="stylesheet" type="text/css" href="https://volamcaothu.mobi/FE/css/vgppopup.css"/>
+      <link href="https://volamcaothu.mobi/FE/css/vgpvip.css" rel="stylesheet" type="text/css"/>
+      <link rel="stylesheet" href="https://volamcaothu.mobi/video/fnon.min.css" />
+      <style>
+         .block-hotro > .content {
+         margin: 0 auto;
+         }
+      </style>
+
+
+
+
+
+      
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript" src="https://volamcaothu.mobi/FE/js/jquery.toast.min.js"></script>
+   </head>
+   
+   <body>
+            <div id="mainpage">
+         <!--HEADER & SLIDER-->
+         <section>
+            <!--HEADER-->
+            <div id="main-header">
+               <div class="container">
+                  <!-- menu -->
+                  <div class="header-menu">
+                     <!-- <div class="menu-mobile visible-sm">
+                        <a href="javascript:void(0);" class="button" id="thisbutton" onClick="mobilemenuShow()">
+                        <span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span>
+                        </a>
+                     </div> -->
+                     <div class="img-logo" id="thislogo">
+                        <!-- <a href="/"><img src="https://volamcaothu.mobi/images/logo.png" alt=""/></a> -->
+                     </div>
+                     <div class="menu-nav" id="thismenu">
+                        <ul>
+                           <li><a href="https://volamcaothu.mobi/home">Trang chủ</a></li>
+                           <li><a href="https://volamcaothu.mobi/pay">Nạp tiền</a></li>
+                           <li><a href="https://www.facebook.com/truongngo0808" target="_blank">Hỗ trợ</a></li>
+                                                      
+                        </ul>
+                     </div>
+                     <div class="menu-nav menu-nav-right float-right" id="thislogin">
+                        <ul>
+                           <li>
+                          
+                           </li>
+                           <li>
+                              <div class="signedin">
+                                 <div class="thumb1">
+                                    <!-- <img src="https://volamcaothu.mobi/images/logo.png" alt=""> -->
+                                    TÀI KHOẢN :  duongdeptrai                                  </div>
+                                 <!--  -->
+                                 
+                                 <a class="signout" href="https://volamcaothu.mobi/logout" >Thoát</a>
+                                 <form id="logout-form" action="https://volamcaothu.mobi/logout" method="get" style="display: none;">
+                                 </form>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div id="background-header"></div>
+         </section>
+         <section style="position: fixed;
+    z-index: 999;
+    bottom: 10px;
+    transition: all 0.3s ease-in-out;
+    " class="goOut">
+    <style>
+      .button-vxu2{
+         border: dotted 1px #ff9138;
+         color: #ff9138;
+         font-weight: bold !important;
+      }
+    </style>
+                  </section>
+         <!--BODY-->
+         <section id="sec-body">
+            <div class="container">
+               <div class="wcskh">
+               
+                  <div class="wcskh-info">
+                    
+                     <style>
+                        .abc-btn:hover {
+                           background: #d1d16a !important;
+                           color: #000 !important;
+                        }
+                     </style>
+                     
+                     <div class="groupbtn">
+                                                                     <a href="https://volamcaothu.mobi/pay" class="button button-vxu">Xu WEB: <span>0</span></a>
+                        <a href="https://volamcaothu.mobi/mocnap" class="button button-vxu">Mốc Nạp: <span>200,000</span></a>
+                        <a href="https://volamcaothu.mobi/chuyenxu" class="button button-vxu">Xu Game: <span>97,000,000</span></a>
+                        <a href="https://volamcaothu.mobi/chuyenxu" class="button button-vxu abc-btn" style="background: #a32b2b; font-weight: bold; color: #fff;">Xu WEB -> Game</a>
+                        
+
+                     </div>
+                  </div>
+                  <div class="wcskh-content">
+                     <div class="tabs-cskh">
+                        <ul>
+
+                                                      <li class="active">
+                              <a href="https://volamcaothu.mobi/account">
+                                 <span class="icon-acc"></span>
+                                 <div>Quản lý tài khoản</div>
+                              </a>
+                           </li>
+                           <li class="">
+                              <a href="https://volamcaothu.mobi/sukien">
+                                 <span class="icon-vipshop"></span>
+                                 <div>BXH Lực Chiến</div>
+                              </a>
+                           </li>
+                           <li class="">
+                              <a href="https://volamcaothu.mobi/mocnap">
+                                 <span class="icon-vipshop"></span>
+                                 <div>Quà Mốc Nạp</div>
+                              </a>
+                           </li>
+
+                           <li class="">
+                              <a href="https://volamcaothu.mobi/muagoieventnewyear">
+                                 <span class="icon-vipshop"></span>
+                                 <div>Mua Gói Event Năm Mới</div>
+                              </a>
+                           </li>
+
+                           <li class="">
+                              <a href="https://volamcaothu.mobi/muagoievent">
+                                 <span class="icon-vipshop"></span>
+                                 <div>Mua Gói Event</div>
+                              </a>
+                           </li>
+                           <li class="">
+                              <a href="https://volamcaothu.mobi/figure">
+                                 <span class="icon-vipshop"></span>
+                                 <div>Nhân Vật Chính </div>
+                              </a>
+                           </li>
+
+                           <li class="">
+                              <a href="https://volamcaothu.mobi/pay">
+                                 <span class="icon-vipshop"></span>
+                                 <div>Nạp Tiền</div>
+                              </a>
+                           </li>
+                           <!-- <li class="">
+                              <a href="https://volamcaothu.mobi/chuyenxu">
+                                 <span class="icon-vipshop"></span>
+                                 <div>Chuyển xu web sang xu game</div>
+                              </a>
+                           </li> -->
+                           <li class="">
+                              <a href="https://volamcaothu.mobi/history">
+                                 <span class="icon-recharge"></span>
+                                 <div>Lịch sử nạp tiền</div>
+                              </a>
+                           </li>
+                           
+                           <li class="">
+                              <a href="https://www.facebook.com/vlcaothumobi">
+                                 <span class="icon-support"></span>
+                                 <div>Hỗ trợ</div>
+                              </a>
+                           </li>
+                           
+
+
+                           
+
+
+                        </ul>
+                     </div>
+                     
+
+<div class="block-accountmanager">
+        
+
+    <div class="content">
+        <div style="margin-bottom: 50px;overflow: hidden;">
+            <ul class="custom-tab">
+                
+                <li class="active">
+                    <a href="https://volamcaothu.mobi/account/1">Đổi mật khẩu cấp 1</a>
+                </li>
+                <li class="">
+                    <a href="https://volamcaothu.mobi/account/2">Thay Đổi Số Điện Thoại</a>
+                </li>
+                
+            </ul>
+        </div>
+        <div class="clear"></div>
+        
+        <h3 class="title">THAY ĐỔI MẬT KHẨU CẤP 1</h3>
+  
+        
+        <style>
+    .invalid-success{
+        width: 100%;
+        margin-top: 0.25rem;
+        font-size: 80%;
+        color: #139754;
+    }
+</style>
+                            
+        <form method="post" action="https://volamcaothu.mobi/change1">
+        <input type="hidden" name="_token" value="3O8u9AvKXw8xZEOnvlhv1BPyomKnZqOV2sdjlKfe">            <div class="form">
+                    <span><strong style="color: red">* </strong>Mật khẩu cấp 1:</span>
+                    <div class="verify-wrap"><input type="password" name="password_old" value="" placeholder="Mật khẩu cấp 1" id="password_old" minlength="6" maxlength="32"></div>
+                </div>
+                				<div class="form">
+                    <span><strong style="color: red">* </strong>Mật khẩu mới:</span>
+                    <div class="verify-wrap"><input type="password" name="password_new" value="" placeholder="Mật khẩu mới" id="password_new" minlength="6" maxlength="32"></div>
+                </div>
+                				<div class="form">
+                    <span><strong style="color: red">* </strong>Nhập lại mật khẩu mới:</span>
+                    <div class="verify-wrap"><input type="password" name="repassword_new" value="" placeholder="Nhập lại mật khẩu mới" id="repassword_new"></div>
+            </div>
+            <button type="submit" class="button button-blueacc">Thay đổi</button>
+        </form>
+            <style>
+        ul.custom-tab li {
+            padding: 10px 20px;
+            background: #e1e1e1;
+            float: left;
+            font-size: 1em;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+        }
+        ul.custom-tab li.active{
+            background: #ff9138;
+        }
+        ul.custom-tab li:hover{
+            background: #ff9138;
+        }
+        ul.custom-tab li:hover a{
+            color: #FFF;
+        }
+        ul.custom-tab li.active a{
+            color: #FFF;
+        }
+        ul.custom-tab li a{
+            color: #ff9138;
+			display: block;
+        }
+        .clear{
+            clear: both;
+        }
+		@media    only screen and (min-width: 640px){
+			.content .form{
+				grid-template-columns: 200px auto;
+			}
+		}	
+            </style>
+        
+       <div style="text-align: center;">
+        <div style="    font-weight: bold; color: red;">Quà Mốc Nạp</div>
+        <img src="https://volamcaothu.mobi/mocnapxnxx.png" style="width: 100%;" alt="adv">
+    </div>
+    
+        <!--<h3><i><strong style="color: red">* </strong>Mật khẩu cấp 2 dùng để tìm lại mật khẩu web</i></h3>-->
+    </div>
+
+        
+    
+   
+
+
+    <script>
+     function return_top() {
+         jQuery('html,body').animate({
+             scrollTop: '300'
+         }, 300)
+     }
+     (function($){
+         $('.btn-grad').on('click',function(e){
+             e.preventDefault();
+             var tar = $(this).attr('href');
+             $('.box-tab').removeClass('active')
+             $(tar).addClass('active')
+         })
+         $('.Message').on('click',function(e){
+             e.preventDefault();
+             $(this).toggleClass('open')
+             $(this).siblings().removeClass('open')
+         })
+     })(jQuery)
+ </script>
+<!-- Load Facebook SDK for JavaScript -->
+
+<script>
+document.getElementById('share-btn2').onclick = function() {
+    FB.login(function(response) {
+        if (response.authResponse) {
+            //alert("Bấm chia sẻ bài viết để nhận code")
+            $('#share-btn2').hide();
+            $('#share-btn').show();
+            $('#share-btn3').show();
+            // getFbUserData();
+
+
+        } else {
+
+        }
+        
+  // handle the response
+}, {scope: 'email'});
+
+function getFbUserData(){
+    FB.api('/me', {locale: 'en_US', fields: 'id,first_name,last_name,email,link,gender,locale,picture'},
+    function (response) {
+        console.log(response);
+    });
+}
+// FB.login(async function(response) {
+//     if(response.authResponse.accessToken) {
+//         console.log(response);
+//     }
+//         // if (response.authResponse.accessToken) {
+//         //   const auth = await AuthService.authorization(
+//         //     response.authResponse.accessToken
+//         //   )
+//         //     .then(async res => {
+//         //     })
+//         //     .catch(err => {
+//         //       console.log(err);
+//         //       alert(that.lang_select.login_fail);
+//         //     });
+//         // }
+//       }, {scope: 'email'});
+//     // }
+
+}
+
+
+document.getElementBưyId('share-btn').onclick = function () {
+    FB.ui({
+        display: 'popup',
+        method: 'share',
+        description: 'Võ Lâm Cao Thủ Mobile 29 Phái',
+        hashtag: '#volamcaothumobile',
+        href: 'https://www.facebook.com/volamcaothumobi/videos/4647072915396363'
+    }, function (response) {
+        if (response && !response.error_code) {
+            FB.api('/me', { locale: 'en_US', fields: 'id,first_name,last_name,email,link,gender,locale,picture' },
+                function (response) {
+                    if (response.id) {
+                        if(!response.email) {
+                            response.email = 'rong@abc.com';
+                        }
+                        let url = "";
+                        let data = { "email": response.email, "uid": response.id };
+                        $.ajax({
+                            url: url,
+                            type: 'get',
+                            data: data,
+                            dataType: 'json',
+                            success: function (res) {
+                                if (res.status == 422) {
+                                    $('#cSecPassWord222').val(res.message);
+                                    $('#share-btn2').hide();
+                                    $('#share-btn').hide();
+                                    $('#share-btn3').hide();
+                                }
+                                if (res.status == 423) {
+                                    $('#share-btn3').text(res.message);
+                                    $('#share-btn2').hide();
+                                    $('#share-btn').hide();
+                                    //$('#share-btn3').hide();
+                                }
+                                if (res.userdata) {
+                                    $('#cSecPassWord222').val(res.userdata.code);
+                                    $('#share-btn2').hide();
+                                    $('#share-btn').hide();
+                                    $('#share-btn3').hide();
+                                }
+                            },
+                            error: function (errRes) {
+                            }
+                        });
+                    }
+
+                });
+
+        } else {
+            // $('#err_desc').text("Quý đại hiệp cần đăng nhập Facebook trên trình duyệt sau đó chia sẻ bài viết lên Facebook trước.");
+            // $('#btnShowErr').click();
+        }
+    }
+    );
+}
+</script>
+
+<script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v10.0'
+          });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+	<script>
+	  window.fbAsyncInit = function() {
+		FB.init({
+		  appId      : '761550505267510',
+		  cookie     : true,
+		  xfbml      : true,
+		  version    : 'v10.0'
+		});
+		  
+		FB.AppEvents.logPageView();   
+		  
+	  };
+
+	  (function(d, s, id){
+		 var js, fjs = d.getElementsByTagName(s)[0];
+		 if (d.getElementById(id)) {return;}
+		 js = d.createElement(s); js.id = id;
+		 js.src = "https://connect.facebook.net/en_US/sdk.js";
+		 fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
+ 
+</div>
+
+<style type="text/css">
+    ul.custom-tab li {
+        padding: 10px 20px;
+        background: #e1e1e1;
+        float: left;
+        font-size: 1em;
+        text-transform: uppercase;
+        margin-bottom: 35px;
+    }
+
+    ul.custom-tab li.active {
+        background: #ff9138;
+    }
+
+    ul.custom-tab li:hover {
+        background: #ff9138;
+    }
+
+    ul.custom-tab li:hover a {
+        color: #FFF;
+    }
+
+    ul.custom-tab li.active a {
+        color: #FFF;
+    }
+
+    ul.custom-tab li a {
+        color: #ff9138;
+        display: block;
+    }
+
+    .clear {
+        clear: both;
+    }
+</style>
+                     
+                     
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!--FOOTER-->
+         <section id="sec-footer">
+         <p>© COPYRIGHT 2022 - Developed by ngo truong - Zalo: 0865.891.213<br>
+               CHƠI QUÁ 180 PHÚT MỘT NGÀY SẼ ẢNH HƯỞNG XẤU ĐẾN SỨC KHỎE<br>
+            </p>
+            <div class="block-footer">
+               <div class="container">
+                  <div class="menu float-right">
+                     <div class="menu-nav">
+                        <ul>
+                           <li><a href="https://volamcaothu.mobi/home">Trang chủ</a></li>
+                           <li><a href="https://volamcaothu.mobi/pay">Nạp tiền</a></li>
+                           <li><a href="https://www.facebook.com/truongngo0808" target="_blank">Hỗ trợ</a></li>
+                           <li><a href="https://volamcaothu.mobi/link">Tải game</a></li>
+                           <li><a href="#top" class="button-top">TOP</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- Include all compiled plugins (below), or include individual files as needed -->
+         <script type="text/javascript" src="https://volamcaothu.mobi/FE/js/slick.min.js"></script>
+         <script type="text/javascript" src="https://volamcaothu.mobi/FE/js/w-script.js"></script>
+         <script src="https://volamcaothu.mobi/video/fnon.min.js"></script>
+         <script>
+            $(document).ready(function() {
+$('.positionq').click(function () {
+   $(this).parent().parent().parent().removeClass('goOut')
+   $(this).parent().parent().parent().removeClass('goIn')
+   $(this).attr('value') == 1 ? $(this).parent().parent().parent().addClass('goOut') : $(this).parent().parent().parent().addClass('goIn');
+   $(this).attr('value') == 1 ? $(this).text('<<<<') : $(this).text('>>>>');
+   $(this).attr('value') == 1 ? $(this).attr('value', 0) : $(this).attr('value', 1);
+})
+   
+// inspired by http://jsfiddle.net/arunpjohny/564Lxosz/1/
+$('.table-responsive-stack').find("th").each(function (i) {
+   
+   $('.table-responsive-stack td:nth-child(' + (i + 1) + ')').prepend('<span class="table-responsive-stack-thead">'+ $(this).text() + ':</span> ');
+   $('.table-responsive-stack-thead').hide();
+});
+
+
+
+
+
+$( '.table-responsive-stack' ).each(function() {
+
+var thCount = $(this).find("th").length; 
+var rowGrow = 100 / thCount + '%';
+//console.log(rowGrow);
+$(this).find("th, td").css('flex-basis', rowGrow);   
+});
+
+
+
+
+function flexTable(){
+if ($(window).width() < 768) {
+   
+$(".table-responsive-stack").each(function (i) {
+   $(this).find(".table-responsive-stack-thead").show();
+   $(this).find('thead').hide();
+});
+   
+ 
+// window is less than 768px   
+} else {
+   
+   
+$(".table-responsive-stack").each(function (i) {
+   $(this).find(".table-responsive-stack-thead").hide();
+   $(this).find('thead').show();
+});
+   
+   
+
+}
+// flextable   
+}      
+
+flexTable();
+
+window.onresize = function(event) {
+ flexTable();
+};
+
+
+
+
+$("#thidaumonphai").change(function() {
+        $("#namephai").text($(this).find('option:selected').text());
+        $("#idphai").text($(this).val());
+    })
+
+// document ready  
+});
+
+
+
+
+         </script>
+      </div>
+   </body>
+</html>
